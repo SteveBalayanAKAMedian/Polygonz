@@ -1,0 +1,10 @@
+C:\Users\stark\source\repos\Polygonz\Polygonz\obj\Debug\Polygonz.csprojAssemblyReference.cache
+C:\Users\stark\source\repos\Polygonz\Polygonz\obj\Debug\Polygonz.Form1.resources
+C:\Users\stark\source\repos\Polygonz\Polygonz\obj\Debug\Polygonz.Properties.Resources.resources
+C:\Users\stark\source\repos\Polygonz\Polygonz\obj\Debug\Polygonz.csproj.GenerateResource.cache
+C:\Users\stark\source\repos\Polygonz\Polygonz\bin\Debug\Polygonz.exe.config
+C:\Users\stark\source\repos\Polygonz\Polygonz\bin\Debug\Polygonz.exe
+C:\Users\stark\source\repos\Polygonz\Polygonz\bin\Debug\Polygonz.pdb
+C:\Users\stark\source\repos\Polygonz\Polygonz\obj\Debug\Polygonz.exe
+C:\Users\stark\source\repos\Polygonz\Polygonz\obj\Debug\Polygonz.pdb
+C:\Users\stark\source\repos\Polygonz\Polygonz\obj\Debug\Polygonz.Form2.resources
