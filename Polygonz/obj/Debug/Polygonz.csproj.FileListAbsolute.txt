@@ -8,3 +8,14 @@ C:\Users\stark\source\repos\Polygonz\Polygonz\bin\Debug\Polygonz.pdb
 C:\Users\stark\source\repos\Polygonz\Polygonz\obj\Debug\Polygonz.exe
 C:\Users\stark\source\repos\Polygonz\Polygonz\obj\Debug\Polygonz.pdb
 C:\Users\stark\source\repos\Polygonz\Polygonz\obj\Debug\Polygonz.Form2.resources
+C:\Steve\GitHubRepos\Polygonz\Polygonz\bin\Debug\Polygonz.exe.config
+C:\Steve\GitHubRepos\Polygonz\Polygonz\bin\Debug\Polygonz.exe
+C:\Steve\GitHubRepos\Polygonz\Polygonz\bin\Debug\Polygonz.pdb
+C:\Steve\GitHubRepos\Polygonz\Polygonz\obj\Debug\Polygonz.csprojAssemblyReference.cache
+C:\Steve\GitHubRepos\Polygonz\Polygonz\obj\Debug\Polygonz.Form1.resources
+C:\Steve\GitHubRepos\Polygonz\Polygonz\obj\Debug\Polygonz.Form2.resources
+C:\Steve\GitHubRepos\Polygonz\Polygonz\obj\Debug\Polygonz.Properties.Resources.resources
+C:\Steve\GitHubRepos\Polygonz\Polygonz\obj\Debug\Polygonz.csproj.GenerateResource.cache
+C:\Steve\GitHubRepos\Polygonz\Polygonz\obj\Debug\Polygonz.csproj.CoreCompileInputs.cache
+C:\Steve\GitHubRepos\Polygonz\Polygonz\obj\Debug\Polygonz.exe
+C:\Steve\GitHubRepos\Polygonz\Polygonz\obj\Debug\Polygonz.pdb
