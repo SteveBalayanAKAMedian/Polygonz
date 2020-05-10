@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Diagnostics;
 
 namespace Polygonz
 {
@@ -16,16 +17,25 @@ namespace Polygonz
     {
         Random random = new Random();
         List<Shape> All_Figures;
+        Stack<Operation> undo;
+        Stack<Operation> redo;
         BinaryFormatter formatter;
         public delegate int RadiusChangedDelegate(int value);
         Form2 form2;
         bool runFlex = false;
-        //int figure_index = -1; //индекс вершины, на которую нажали
+        int start_x = 0;
+        int start_y = 0;
+        bool moving = false;
         public Form1()
         {
+
             InitializeComponent();
             circleToolStripMenuItem1.Checked = true; //изначально рисуем вершины в форме круга
             All_Figures = new List<Shape>();
+            undo = new Stack<Operation>();
+            undo.Push(null);
+            redo = new Stack<Operation>();
+            redo.Push(null);
             DoubleBuffered = true; //чтобы не моргало при перерисовке
             saveFileDialog1.Filter = "binary files(*.bin)|*.bin";
             openFileDialog1.Filter = "binary files(*.bin)|*.bin";
@@ -129,7 +139,7 @@ namespace Polygonz
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality; //это просто для красоты
-            SolidBrush brush = new SolidBrush(Color.Red); //TO DO -- как-то связать с цветом объектов
+            SolidBrush brush = new SolidBrush(Shape.Colour); //TO DO -- как-то связать с цветом объектов
 
             foreach(Shape i in All_Figures)
             {
@@ -145,6 +155,8 @@ namespace Polygonz
 
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
+            start_x = e.X;
+            start_y = e.Y;
             int flag = 0;
             int index = 0;
             int figure_index = -1;
@@ -195,7 +207,7 @@ namespace Polygonz
                 if(moving_whole)
                 {
                     foreach (Shape i in All_Figures)  
-                    {                                       
+                    {
                         i.Moving = true;
                         i.Dx = e.X - i.X;
                         i.Dy = e.Y - i.Y;
@@ -211,42 +223,56 @@ namespace Polygonz
                     {
                         Circle c = new Circle(e.X, e.Y);
                         All_Figures.Add(c);
+                        undo.Push(new ActAdd(e.X, e.Y, All_Figures.Count - 1, c.GetType()));
+                        //undo.Push(null);
                     }
                     if (squareToolStripMenuItem1.Checked)
                     {
                         Square s = new Square(e.X, e.Y);
                         All_Figures.Add(s);
+                        undo.Push(new ActAdd(e.X, e.Y, All_Figures.Count - 1, s.GetType()));
                     }
                     if (triangleToolStripMenuItem1.Checked)
                     {
                         Triangle t = new Triangle(e.X, e.Y);
                         All_Figures.Add(t);
+                        undo.Push(new ActAdd(e.X, e.Y, All_Figures.Count - 1, t.GetType()));
+                        //undo.Push(null);
                     }
-
                 }
             }
             if(e.Button == MouseButtons.Right)
             {
                 if (figure_index != -1) //чтобы не срабатывало при рандомных кликах ПКМ (точно попали в вершину)
                 {
+                    undo.Push(new ActRemove(All_Figures[figure_index].X, All_Figures[figure_index].Y, figure_index, All_Figures[figure_index].GetType()));
+                    //undo.Push(null);
+                    redo.Clear();
+                    redo.Push(null);
                     All_Figures.RemoveAt(figure_index);
                 }
             }
-            if(figure_index != -1)
-            {
-                Console.WriteLine(figure_index);
-            }
+            //check for nulls
             Invalidate();
         }
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
-            //figure_index = -1;
-            foreach(Shape i in All_Figures)
+            bool usedUndo = false;
+            int Index = 0;
+            start_x = e.X - start_x;
+            start_y = e.Y - start_y;
+            foreach (Shape i in All_Figures)
             {
+                if(i.Moving)
+                {
+                    undo.Push(new ActMove(start_x, start_y, Index));
+                    usedUndo = true;
+                }
                 i.Moving = false;
                 i.Dx = 0;
                 i.Dy = 0;
+                ++Index;
             }   
             Invalidate(); //после возможного перемещения вершины нужно перестроить выпуклую оболочку
             //удаление вершин, не лежащих в выпуклой оболочке
@@ -256,11 +282,19 @@ namespace Polygonz
                 {
                     if (!All_Figures[i].Used)
                     {
+                        undo.Push(new ActRemove(All_Figures[i].X, All_Figures[i].Y, i, All_Figures[i].GetType()));
+                        usedUndo = true;
                         All_Figures.Remove(All_Figures[i]);
                         i--;
                     }
                 }
             }
+            //if(usedUndo) 
+            //{
+                undo.Push(null);
+                redo.Clear();
+                redo.Push(null);
+            //}
             Invalidate(); //после удаления вершин, не входящих в выпуклую оболочку, надо перерисовать
         }
 
@@ -280,6 +314,10 @@ namespace Polygonz
         private void colorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             colorDialog1.ShowDialog();
+            undo.Push(new ActColour(Shape.Colour));
+            undo.Push(null);
+            redo.Clear();
+            redo.Push(null);
             Shape.Colour = colorDialog1.Color;
             //All_Figures[0].Color = colorDialog1.Color; 
             Invalidate();
@@ -308,6 +346,10 @@ namespace Polygonz
           
         private void changeRadius(object sender, RadiusEventArgs e)
         {
+            undo.Push(new ActRadius(e.rad - Shape.radius));
+            undo.Push(null);
+            redo.Clear();
+            redo.Push(null);
             Shape.radius = e.rad;
             Refresh();
         }
@@ -389,5 +431,40 @@ namespace Polygonz
             Refresh();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(undo.Count > 1)
+            {
+                undo.Pop();
+                while(undo.Peek() != null)
+                {
+                    undo.Peek().Undo(All_Figures);
+                    redo.Push(undo.Pop());
+                }
+                redo.Push(null);
+            }
+            foreach (Shape i in All_Figures)
+            {
+                Console.Write(i.X);
+                Console.WriteLine(i.Y);
+            }
+            Invalidate();
+            //Refresh();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if(redo.Count > 1)
+            {
+                redo.Pop();
+                while(redo.Peek() != null)
+                {
+                    redo.Peek().Redo(All_Figures);
+                    undo.Push(redo.Pop());
+                }
+                undo.Push(null);
+                Refresh();
+            }
+        }
     }
 }

@@ -93,29 +93,5 @@ namespace Polygonz
             return x <= this.x + half_side && y <= this.y + half_side && x >= this.x - half_side && y >= this.y - half_side;
         }
 
-        //public override Color Color
-        //{
-        //    get
-        //    {
-        //        return Colour;
-        //    }
-        //    set
-        //    {
-        //        Colour = value;
-        //    }
-        //}
-
-        //public override int Radius
-        //{
-        //    get
-        //    {
-        //        return radius;
-        //    }
-        //    set
-        //    {
-        //        radius = value;
-        //    }
-        //}
-
     }
 }
