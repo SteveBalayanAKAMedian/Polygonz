@@ -19,3 +19,14 @@ C:\Steve\GitHubRepos\Polygonz\Polygonz\obj\Debug\Polygonz.csproj.GenerateResourc
 C:\Steve\GitHubRepos\Polygonz\Polygonz\obj\Debug\Polygonz.csproj.CoreCompileInputs.cache
 C:\Steve\GitHubRepos\Polygonz\Polygonz\obj\Debug\Polygonz.exe
 C:\Steve\GitHubRepos\Polygonz\Polygonz\obj\Debug\Polygonz.pdb
+F:\Polygonz\Polygonz\bin\Debug\Polygonz.exe.config
+F:\Polygonz\Polygonz\bin\Debug\Polygonz.exe
+F:\Polygonz\Polygonz\bin\Debug\Polygonz.pdb
+F:\Polygonz\Polygonz\obj\Debug\Polygonz.csprojAssemblyReference.cache
+F:\Polygonz\Polygonz\obj\Debug\Polygonz.Form1.resources
+F:\Polygonz\Polygonz\obj\Debug\Polygonz.Form2.resources
+F:\Polygonz\Polygonz\obj\Debug\Polygonz.Properties.Resources.resources
+F:\Polygonz\Polygonz\obj\Debug\Polygonz.csproj.GenerateResource.cache
+F:\Polygonz\Polygonz\obj\Debug\Polygonz.csproj.CoreCompileInputs.cache
+F:\Polygonz\Polygonz\obj\Debug\Polygonz.exe
+F:\Polygonz\Polygonz\obj\Debug\Polygonz.pdb

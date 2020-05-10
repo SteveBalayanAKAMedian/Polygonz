@@ -12,9 +12,11 @@ namespace Polygonz
 {
     public partial class Form1 : Form
     {
+        Random random = new Random();
         List<Shape> All_Figures;
         public delegate int RadiusChangedDelegate(int value);
         Form2 form2;
+        bool runFlex = false;
 
         public Form1()
         {
@@ -313,6 +315,46 @@ namespace Polygonz
             form2.Activate();
             form2.Show();
             form2.delRad += changeRadius;
+        }
+
+        private void ChangePosition()
+        {
+            for(int i = 0; i < All_Figures.Count; ++i)
+            {
+                All_Figures[i].X += random.Next(-1, 2);
+                All_Figures[i].Y += random.Next(-1, 2);
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if(runFlex)
+            {
+                ChangePosition();
+                Refresh();
+                if (All_Figures.Count > 2)
+                {
+                    for (int i = 0; i < All_Figures.Count; ++i)
+                    {
+                        if (!All_Figures[i].Used)
+                        {
+                            All_Figures.Remove(All_Figures[i]);
+                            i--;
+                        }
+                    }
+                }
+                Refresh();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            runFlex = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            runFlex = false;
         }
     }
 }
