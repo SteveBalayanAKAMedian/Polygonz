@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace Polygonz
 {
+    [Serializable]
     class Triangle : Shape
     {
         public Triangle(int x, int y) : base(x, y) { }

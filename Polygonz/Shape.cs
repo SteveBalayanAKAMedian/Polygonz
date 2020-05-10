@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace Polygonz
 {
+    [Serializable]
     abstract class Shape
     {
         protected int x, y;

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Polygonz
 {
@@ -14,16 +16,20 @@ namespace Polygonz
     {
         Random random = new Random();
         List<Shape> All_Figures;
+        BinaryFormatter formatter;
         public delegate int RadiusChangedDelegate(int value);
         Form2 form2;
         bool runFlex = false;
-
+        //int figure_index = -1; //индекс вершины, на которую нажали
         public Form1()
         {
             InitializeComponent();
             circleToolStripMenuItem1.Checked = true; //изначально рисуем вершины в форме круга
             All_Figures = new List<Shape>();
             DoubleBuffered = true; //чтобы не моргало при перерисовке
+            saveFileDialog1.Filter = "binary files(*.bin)|*.bin";
+            openFileDialog1.Filter = "binary files(*.bin)|*.bin";
+            formatter = new BinaryFormatter();
         }
 
         public void BuildConvexHull(PaintEventArgs e) //построение оболочки за О(n^3) и прорисовка
@@ -140,7 +146,8 @@ namespace Polygonz
         private void Form1_MouseDown(object sender, MouseEventArgs e)
         {
             int flag = 0;
-            int index = 0, figure_index = -1;
+            int index = 0;
+            int figure_index = -1;
             foreach (Shape i in All_Figures)        //цикл foreach для ускорения обращения
             {                                       //попали в вершину или нет
                 if (i.IsInside(e.X, e.Y))
@@ -225,11 +232,16 @@ namespace Polygonz
                     All_Figures.RemoveAt(figure_index);
                 }
             }
+            if(figure_index != -1)
+            {
+                Console.WriteLine(figure_index);
+            }
             Invalidate();
         }
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
+            //figure_index = -1;
             foreach(Shape i in All_Figures)
             {
                 i.Moving = false;
@@ -237,7 +249,6 @@ namespace Polygonz
                 i.Dy = 0;
             }   
             Invalidate(); //после возможного перемещения вершины нужно перестроить выпуклую оболочку
-
             //удаление вершин, не лежащих в выпуклой оболочке
             if (All_Figures.Count > 2)
             {
@@ -250,7 +261,6 @@ namespace Polygonz
                     }
                 }
             }
-
             Invalidate(); //после удаления вершин, не входящих в выпуклую оболочку, надо перерисовать
         }
 
@@ -321,10 +331,13 @@ namespace Polygonz
         {
             for(int i = 0; i < All_Figures.Count; ++i)
             {
-                All_Figures[i].X += random.Next(-1, 2);
-                All_Figures[i].Y += random.Next(-1, 2);
+                //if (i != figure_index)
+                //{
+                    All_Figures[i].X += random.Next(-1, 2);
+                    All_Figures[i].Y += random.Next(-1, 2);
+                //}
             }
-        }
+        } //вершины начинают двигаться в рандомном направлении каждые 100 миллисекунд
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -356,5 +369,25 @@ namespace Polygonz
         {
             runFlex = false;
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+            using (Stream stream = new FileStream(saveFileDialog1.FileName, FileMode.Create))
+            {
+                formatter.Serialize(stream, All_Figures);
+            }
+        }
+
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+            using (Stream stream = new FileStream(openFileDialog1.FileName, FileMode.Open))
+            {
+                All_Figures = (List<Shape>)formatter.Deserialize(stream);
+            }
+            Refresh();
+        }
+
     }
 }

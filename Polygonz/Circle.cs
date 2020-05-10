@@ -7,6 +7,7 @@ using System.Drawing;
 
 namespace Polygonz
 {
+    [Serializable]
     class Circle : Shape
     {
         public Circle(int x, int y) : base(x, y) { }
