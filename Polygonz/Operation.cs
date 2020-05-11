@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using DifferentShapes;
 
 namespace Polygonz
 {
@@ -202,35 +203,5 @@ namespace Polygonz
             arr[this.id].X += this.x;
             arr[this.id].Y += this.y;
         }
-    }
-
-    class ActHullMove : Operation
-    {
-        int x, y;
-
-        public ActHullMove(int x, int y)
-        {
-            this.x = x;
-            this.y = y;
-        }
-
-        public override void Undo(List<Shape> arr)
-        {
-            for (int i = 0; i < arr.Count; ++i)
-            {
-                arr[i].X -= this.x;
-                arr[i].Y -= this.y;
-            }
-        }
-
-        public override void Redo(List<Shape> arr)
-        {
-            for (int i = 0; i < arr.Count; ++i)
-            {
-                arr[i].X += this.x;
-                arr[i].Y += this.y;
-            }
-        }
-
     }
 }

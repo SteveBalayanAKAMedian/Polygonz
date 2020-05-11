@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Diagnostics;
+using DifferentShapes;
 
 namespace Polygonz
 {
@@ -25,7 +26,7 @@ namespace Polygonz
         bool runFlex = false;
         int start_x = 0;
         int start_y = 0;
-        bool moving = false;
+        //bool moving = false;
         public Form1()
         {
 
@@ -258,7 +259,7 @@ namespace Polygonz
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
-            bool usedUndo = false;
+            //bool usedUndo = false;
             int Index = 0;
             start_x = e.X - start_x;
             start_y = e.Y - start_y;
@@ -267,7 +268,7 @@ namespace Polygonz
                 if(i.Moving)
                 {
                     undo.Push(new ActMove(start_x, start_y, Index));
-                    usedUndo = true;
+                    //usedUndo = true;
                 }
                 i.Moving = false;
                 i.Dx = 0;
@@ -283,7 +284,7 @@ namespace Polygonz
                     if (!All_Figures[i].Used)
                     {
                         undo.Push(new ActRemove(All_Figures[i].X, All_Figures[i].Y, i, All_Figures[i].GetType()));
-                        usedUndo = true;
+                        //usedUndo = true;
                         All_Figures.Remove(All_Figures[i]);
                         i--;
                     }
@@ -400,17 +401,17 @@ namespace Polygonz
                 }
                 Refresh();
             }
-        }
+        } 
 
         private void button1_Click(object sender, EventArgs e)
         {
             runFlex = true;
-        }
+        } //вершины начинают двигаться
 
         private void button2_Click(object sender, EventArgs e)
         {
             runFlex = false;
-        }
+        } //вершины прекращают двигаться
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -450,7 +451,7 @@ namespace Polygonz
             }
             Invalidate();
             //Refresh();
-        }
+        } //Undo
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -465,6 +466,6 @@ namespace Polygonz
                 undo.Push(null);
                 Refresh();
             }
-        }
+        } //Redo
     }
 }
