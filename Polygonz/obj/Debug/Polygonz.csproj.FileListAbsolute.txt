@@ -33,3 +33,5 @@ F:\Polygonz\Polygonz\obj\Debug\Polygonz.pdb
 F:\Polygonz\Polygonz\bin\Debug\DifferentShapes.dll
 F:\Polygonz\Polygonz\bin\Debug\DifferentShapes.pdb
 F:\Polygonz\Polygonz\obj\Debug\Polygonz.csproj.CopyComplete
+F:\Polygonz\Polygonz\bin\Debug\DefShapes.dll
+F:\Polygonz\Polygonz\bin\Debug\DefShapes.pdb

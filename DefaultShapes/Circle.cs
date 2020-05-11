@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace DifferentShapes
+namespace DefaultShapes
 {
     [Serializable]
     public class Circle : Shape

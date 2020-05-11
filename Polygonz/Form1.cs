@@ -10,7 +10,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Diagnostics;
-using DifferentShapes;
+using ShapeLib;
+using DefShapes;
 
 namespace Polygonz
 {

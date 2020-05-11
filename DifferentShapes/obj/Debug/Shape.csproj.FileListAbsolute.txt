@@ -1,0 +1,6 @@
+F:\Polygonz\DifferentShapes\bin\Debug\DifferentShapes.dll
+F:\Polygonz\DifferentShapes\bin\Debug\DifferentShapes.pdb
+F:\Polygonz\DifferentShapes\obj\Debug\Shape.csprojAssemblyReference.cache
+F:\Polygonz\DifferentShapes\obj\Debug\Shape.csproj.CoreCompileInputs.cache
+F:\Polygonz\DifferentShapes\obj\Debug\DifferentShapes.dll
+F:\Polygonz\DifferentShapes\obj\Debug\DifferentShapes.pdb

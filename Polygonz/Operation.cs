@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using DifferentShapes;
+using ShapeLib;
+using DefShapes;
 
 namespace Polygonz
 {

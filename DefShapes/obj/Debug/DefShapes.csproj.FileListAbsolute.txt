@@ -1,0 +1,9 @@
+F:\Polygonz\DefShapes\obj\Debug\DefShapes.csprojAssemblyReference.cache
+F:\Polygonz\DefShapes\obj\Debug\DefShapes.csproj.CoreCompileInputs.cache
+F:\Polygonz\DefShapes\bin\Debug\DefShapes.dll
+F:\Polygonz\DefShapes\bin\Debug\DefShapes.pdb
+F:\Polygonz\DefShapes\bin\Debug\DifferentShapes.dll
+F:\Polygonz\DefShapes\bin\Debug\DifferentShapes.pdb
+F:\Polygonz\DefShapes\obj\Debug\DefShapes.csproj.CopyComplete
+F:\Polygonz\DefShapes\obj\Debug\DefShapes.dll
+F:\Polygonz\DefShapes\obj\Debug\DefShapes.pdb

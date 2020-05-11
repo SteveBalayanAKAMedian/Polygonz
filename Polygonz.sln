@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Polygonz", "Polygonz\Polygonz.csproj", "{AF773C03-BEE4-4085-9FAC-7D6150918BA0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DifferentShapes", "DifferentShapes\DifferentShapes.csproj", "{DC7345F3-8C31-465B-813A-48FDC2ED2001}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapeLib", "DifferentShapes\ShapeLib.csproj", "{DC7345F3-8C31-465B-813A-48FDC2ED2001}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefShapes", "DefShapes\DefShapes.csproj", "{26F64549-4018-4ED2-9EF2-330DF76BCB73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DC7345F3-8C31-465B-813A-48FDC2ED2001}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC7345F3-8C31-465B-813A-48FDC2ED2001}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC7345F3-8C31-465B-813A-48FDC2ED2001}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26F64549-4018-4ED2-9EF2-330DF76BCB73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26F64549-4018-4ED2-9EF2-330DF76BCB73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26F64549-4018-4ED2-9EF2-330DF76BCB73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26F64549-4018-4ED2-9EF2-330DF76BCB73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

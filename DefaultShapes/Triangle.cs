@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using Shape
 
-namespace DifferentShapes
+namespace DefaultShapes
 {
     [Serializable]
     public class Triangle : Shape

@@ -1,0 +1,4 @@
+F:\Polygonz\DefaultShapes\obj\Debug\netcoreapp3.1\DefaultShapes.csprojAssemblyReference.cache
+F:\Polygonz\DefaultShapes\obj\Debug\netcoreapp3.1\DefaultShapes.csproj.CoreCompileInputs.cache
+F:\Polygonz\DefaultShapes\obj\Debug\netcoreapp3.1\DefaultShapes.AssemblyInfoInputs.cache
+F:\Polygonz\DefaultShapes\obj\Debug\netcoreapp3.1\DefaultShapes.AssemblyInfo.cs

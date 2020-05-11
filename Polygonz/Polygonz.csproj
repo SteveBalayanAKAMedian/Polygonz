@@ -90,9 +90,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DifferentShapes\DifferentShapes.csproj">
+    <ProjectReference Include="..\DefShapes\DefShapes.csproj">
+      <Project>{26f64549-4018-4ed2-9ef2-330df76bcb73}</Project>
+      <Name>DefShapes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DifferentShapes\ShapeLib.csproj">
       <Project>{dc7345f3-8c31-465b-813a-48fdc2ed2001}</Project>
-      <Name>DifferentShapes</Name>
+      <Name>ShapeLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

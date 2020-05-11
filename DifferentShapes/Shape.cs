@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace DifferentShapes
+namespace ShapeLib
 {
     [Serializable]
     public abstract class Shape
