@@ -434,14 +434,11 @@ namespace Polygonz
             {
                 using (Stream stream = new FileStream(openFileDialog1.FileName, FileMode.Open))
                 {
-                    if (openFileDialog1.FileName != "")
-                    {
-                        All_Figures = (List<Shape>)formatter.Deserialize(stream);
-                        Shape.radius = (int)formatter.Deserialize(stream);
-                        Shape.Colour = (Color)formatter.Deserialize(stream);
-                        undo.Clear();
-                        redo.Clear();
-                    }
+                    All_Figures = (List<Shape>)formatter.Deserialize(stream);
+                    Shape.radius = (int)formatter.Deserialize(stream);
+                    Shape.Colour = (Color)formatter.Deserialize(stream);
+                    undo.Clear();
+                    redo.Clear();
                 }
             }
             Refresh();
