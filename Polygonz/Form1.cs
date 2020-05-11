@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Diagnostics;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using ShapeLib;
 using DefShapes;
 
@@ -420,15 +422,27 @@ namespace Polygonz
             using (Stream stream = new FileStream(saveFileDialog1.FileName, FileMode.Create))
             {
                 formatter.Serialize(stream, All_Figures);
+                formatter.Serialize(stream, Shape.radius);
+                formatter.Serialize(stream, Shape.Colour);
             }
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
-            using (Stream stream = new FileStream(openFileDialog1.FileName, FileMode.Open))
+            if (openFileDialog1.FileName != "" && File.Exists(openFileDialog1.FileName))
             {
-                All_Figures = (List<Shape>)formatter.Deserialize(stream);
+                using (Stream stream = new FileStream(openFileDialog1.FileName, FileMode.Open))
+                {
+                    if (openFileDialog1.FileName != "")
+                    {
+                        All_Figures = (List<Shape>)formatter.Deserialize(stream);
+                        Shape.radius = (int)formatter.Deserialize(stream);
+                        Shape.Colour = (Color)formatter.Deserialize(stream);
+                        undo.Clear();
+                        redo.Clear();
+                    }
+                }
             }
             Refresh();
         }
